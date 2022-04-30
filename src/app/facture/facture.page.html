@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>facture</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <label> insérez votre secteur </label>
+  <ion-input  [(ngModel)]="secteur" ></ion-input>
+
+
+    <ion-button (click)="addData()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+
+
+<ion-list>
+ <ion-list>
+
+   <ion-item-sliding *ngFor="let facture of listData; let  i = index;" >
+
+<ion-card>
+      <ion-card-header>
+        <ion-checkbox [(ngModel)]="facture.isselected" ></ion-checkbox>
+        <ion-card-title>
+          Nom de Client: {{facture.client.nom}} {{facture.client.prenom}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h4>Adresse : Ghardeya 8066</h4>
+
+        <h4>Référence Facture: {{facture.referenceFact}}</h4>
+
+        <h4>Montant: {{facture.montant}} DT</h4>
+
+        <h4>Etat: {{facture.etat}} </h4>
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="removeData(i)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-card-content>
+
+      </ion-card>
+
+
+
+
+   </ion-item-sliding>
+ </ion-list>
+
+
+</ion-list>
+<ion-button   expand="full" (click)="openModal()">Payer</ion-button>
+</ion-content>
